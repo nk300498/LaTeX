@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[bottom=0.5in,top=0.5in,right=1in,left=1in]{geometry}
+
+\title{Experiment 1}
+\author{Nitish Kumar Thakur \\ RE000144 }
+\date{2 August, 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Objective}
+Want to Understand how ASK and BPSK modulation work Practically,for this we uses AD633 IC
+
+\section{Components and Equipment Required}                    *capacitors(1uf)-2*BreadBoard *oscilloscope(DSO)*Power supply* Function Generator*IC-AD633 
+ 
+\section{Theory}
+\subsubsection{ASK}
+In ASK(Amplitude shift keying) Binary '1' represent presence of carrier and binary '0' represent absence of carrier.\par
+For ASK generation ON-OFF coding will used in which Binary input sequence signal Binary'1' represented with positive pulse and Binary '0'represented with "0" value.and when this sequence multiplied with carrier signal then ASK generation will happen. \par
+This things shown in below picture. \ref{ASK mod}
+\begin{figure*}[h]
+	\centering
+	\includegraphics[scale=1]{ASK.JPG}
+	\caption{ASK modulation representation}
+	\label{ASK mod}
+\end{figure*}
+
+\subsubsection{BPSK}
+In Binary Phase Shift Keying (BPSK)  Binary '1' represent presence of carrier and binary '0' represent '180'phase shift of actual carrier \par 
+For BPSK generation NRZ coding will used in which Binary input sequence signal Binary'1' represented with positive pulse and Binary '0'represented with negative pulse.and when this sequence multiplied with carrier signal then BPSK  generation will happen.\par
+This things shown in below picture. \ref{BPSK mod}.
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=1]{BPSK.JPG}
+	\caption{BPSK modulation representation}
+	\label{BPSK mod}
+\end{figure*}
+
+
+
+\subsubsection{IC AD-633}
+The AD633 is a four-quadrant, analog multiplier. It includes high impedance, differential X and Y inputs,and a high impedance summing input (Z). 
+total accuracy of 2 percent of full scale.\par 100 µV rmsin.........bandwidth 10 Hz to 10 kHz . \par A 1 MHz bandwidth,20 V/µs slew rate \par
+The block diagram of IC AD-633 is shown in Figure \ref{BD} 
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=1]{IC_block_diagram.JPG}
+	\caption{Block diagram of IC AD-633}
+	\label{BD}
+\end{figure*}
+
+
+Pin description of IC AD-633 in figure \ref{BDF} 
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=1]{IC_block_diagram_description.jpg}
+	\caption{Description of different pin of IC AD-633}
+	\label{BDF}
+\end{figure*}
+ 
+ 
+The functional diagram of IC AD-633 as a multiplier is shown in Figure \ref{FD}
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[width=1\linewidth]{IC_functional_diagram.JPG}
+	\caption{Functional diagram of IC AD-633 as a multiplier}
+	\label{FD}
+\end{figure*}
+
+
+
+\section{Observation}
+\subsection{ASK}
+In IC AD-633 we gave message signal in pin 1(+) and pin 2(-).and in Pin 3(+) and 4(-) we gave carrier signal\par
+The  message signal taken from DSO we take square wave the value of signal is 4.5 Vp-p and frequency-250Hz\par
+The value of carrier signal(sin wave) we taken from fuction generator with 1.88 Vp-p and frequency-2.23 KHz.\par
+in experiment we supply power +10v and -10v at pin 8 and 5 respectively and we connect o.1uf capacitor at pin 8 and 5.\par
+pin-6 is optional so we connected ground.\par
+
+
+\subsection{BPSK}
+In BPSK everything is same as ASK only thing we change Message signal sequence, in ASK we take on-off sequence but in BPSK we take NRZ sequence in which Binary 1 Represented with positive pulse and Binary '0' represented with negative pulse. the value of positive peak +4.5V and negative peak -4. 5V and carrier freq we take 853 khz other all things are same. 
+
+\section{Results}
+ \subsection{ASK}
+ Output we taken from pin-7 and this output is given in oscilloscope and we observe the figure on oscilloscope and we observe that these figure is same as we study theoretically in above section. 
+ \subsection{BPSK}
+ again we taken output from pin-7 and connect with oscilloscope and observe the figure and found same figure as we study theoretically in above section. 
+
+\section{Sources of error}
+ There is error in square wave(Message signal) we can't generate perfect square wave because Gibbs phenomena. 
+
+
+\section{Conclusion}
+ We perform experiment on ASK and BPSK modulation techniques. and verify that what we study theoretically matched or not. 
+
+
+\end{document}
