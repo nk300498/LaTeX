@@ -3,100 +3,142 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage[bottom=0.5in,top=0.5in,right=1in,left=1in]{geometry}
+\usepackage{float}
 
-\title{Experiment 1}
+\title{Experiment-2}
 \author{Nitish Kumar Thakur \\ RE000144 }
-\date{2 August, 2021}
+\date{10 August, 2021}
 
 \begin{document}
 
 \maketitle
 
 \section{Objective}
-Want to Understand how ASK and BPSK modulation work Practically,for this we uses AD633 IC
+Want to understand how sampling work.for this we design sample and hold circuit using IC LF-398,and we reconstruct the message signal with The help of Butterworth low pass filter. 
 
-\section{Components and Equipment Required}                    *capacitors(1uf)-2*BreadBoard *oscilloscope(DSO)*Power supply* Function Generator*IC-AD633 
+\section{Components and Equipment Required}                
+*IC LF-398 *Capacitor(0.01uf)-2 (0.1uf)-2 *Resistor(3.3kohm)-2 *Regulated Power supply *Function generator *Dso *wires/probes
+ 
+ 
+ 
  
 \section{Theory}
-\subsubsection{ASK}
-In ASK(Amplitude shift keying) Binary '1' represent presence of carrier and binary '0' represent absence of carrier.\par
-For ASK generation ON-OFF coding will used in which Binary input sequence signal Binary'1' represented with positive pulse and Binary '0'represented with "0" value.and when this sequence multiplied with carrier signal then ASK generation will happen. \par
-This things shown in below picture. \ref{ASK mod}
+We want to convert Analog signal to Digital signal because Digital signal generally advantageous over Analog signal.\par
+Sampling Theorem:-so we discretize the analog signal so my main aim is how much we take sample from continuous signal so in future if we want to reconstruct the same signal so we are able ,for this there is one theorem  Nyquist theorem, Nyquist theorem tell us if we take minimum sampling rate fs must be greater then 2 times of highest frequency contain in message signal,then we are able to reconstruct the message signal. fs less then 2fm then aliasing will happen.\par
+Also fs not equal to 2fm because we are not able to build perfect/ideal reconstruction filter(low pass filter) \par
+There is 3 ways to do sampling 
+
+\subsection{Ideal sampling}
+In ideal sampling we just multiply Analog signal with impulse train shown in below figure.but problem is we can't generate ideal impulse train practically so this method just for theoretical understanding.
+in figure\ref{ideal} we take m(t) and multiply with impulse train of time period Ts.\par
+
+ 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{ideal.JPG}
+	\caption{Ideal sampling}
+	\label{ideal}
+\end{figure}
+
+
+\subsection{Natural Sampling}
+Natural sampling similar to ideal sampling but in Natural sampling we multiply the Message signal with pulse train instead of impulse train.
+
+This things shown in below picture.
 \begin{figure*}[h]
 	\centering
-	\includegraphics[scale=1]{ASK.JPG}
-	\caption{ASK modulation representation}
-	\label{ASK mod}
+	\includegraphics[scale=1]{Natural.JPG}
+	\caption{Natural sampling}
+	\label{Natural}
 \end{figure*}
 
-\subsubsection{BPSK}
-In Binary Phase Shift Keying (BPSK)  Binary '1' represent presence of carrier and binary '0' represent '180'phase shift of actual carrier \par 
-For BPSK generation NRZ coding will used in which Binary input sequence signal Binary'1' represented with positive pulse and Binary '0'represented with negative pulse.and when this sequence multiplied with carrier signal then BPSK  generation will happen.\par
-This things shown in below picture. \ref{BPSK mod}.
+
+\subsection{Flat top sampling}
+The problem with Natural sampling is information stored in the form magnitude. and we know that Magnitude is much more effected by Noise compare to other parameter(phase/frequency),so in flat top sampling
+we perform sampling in such way that magnitude just flat even message signal amplitude changes.
+This things shown in below picture. 
+\begin{figure*}[h]
+	\centering
+	\includegraphics[scale=0.7]{Flat.JPG}
+	\caption{Flat Top sampling}
+	\label{Flat}
+\end{figure*}
+\subsection{Butterworth low pass filter}
+  For reconstuction of signal we uses low pass filter that means 2nd order Butterworth low pass filter.here we take R1=R2 and C1=C2 for simplicity
+  
 \begin{figure*}[ht]
 	\centering
-	\includegraphics[scale=1]{BPSK.JPG}
-	\caption{BPSK modulation representation}
-	\label{BPSK mod}
+	\includegraphics[scale=1]{butter.png}
+	\caption{ Butterworth filter}
+	\label{butt}
 \end{figure*}
+  
+\subsection{IC-398 and Pin description}
 
-
-
-\subsubsection{IC AD-633}
-The AD633 is a four-quadrant, analog multiplier. It includes high impedance, differential X and Y inputs,and a high impedance summing input (Z). 
-total accuracy of 2 percent of full scale.\par 100 µV rmsin.........bandwidth 10 Hz to 10 kHz . \par A 1 MHz bandwidth,20 V/µs slew rate \par
-The block diagram of IC AD-633 is shown in Figure \ref{BD} 
-\begin{figure*}[ht]
-	\centering
-	\includegraphics[scale=1]{IC_block_diagram.JPG}
-	\caption{Block diagram of IC AD-633}
-	\label{BD}
-\end{figure*}
-
-
-Pin description of IC AD-633 in figure \ref{BDF} 
-\begin{figure*}[ht]
-	\centering
-	\includegraphics[scale=1]{IC_block_diagram_description.jpg}
-	\caption{Description of different pin of IC AD-633}
-	\label{BDF}
-\end{figure*}
  
- 
-The functional diagram of IC AD-633 as a multiplier is shown in Figure \ref{FD}
 \begin{figure*}[ht]
 	\centering
-	\includegraphics[width=1\linewidth]{IC_functional_diagram.JPG}
-	\caption{Functional diagram of IC AD-633 as a multiplier}
-	\label{FD}
+	\includegraphics[scale=1]{ic.png}
+	\caption{ figure of IC-398}
+	\label{pin}
+\end{figure*}
+
+
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=1]{piin.png}
+	\caption{Function of different pin}
+	\label{piin}
+\end{figure*}
+
+\subsection{Functional Block diagram}
+The functional diagram of IC-398 as a multiplier is shown in Figure \ref{FBD}
+\begin{figure*}[h]
+	\centering
+	\includegraphics[scale=0.65]{Functional_Block_Diagr_IC.JPG}
+	\caption{Functional Block Diagram of IC-398}
+	\label{FBD}
 \end{figure*}
 
 
 
-\section{Observation}
-\subsection{ASK}
-In IC AD-633 we gave message signal in pin 1(+) and pin 2(-).and in Pin 3(+) and 4(-) we gave carrier signal\par
-The  message signal taken from DSO we take square wave the value of signal is 4.5 Vp-p and frequency-250Hz\par
-The value of carrier signal(sin wave) we taken from fuction generator with 1.88 Vp-p and frequency-2.23 KHz.\par
-in experiment we supply power +10v and -10v at pin 8 and 5 respectively and we connect o.1uf capacitor at pin 8 and 5.\par
-pin-6 is optional so we connected ground.\par
+\section{Observation and Result}
+*pin1-(+15v) and pin4-(-15v)*pin6-0.01uf capacitor*pin7-Ground \par *Pin3-sine wave (2 Vp-p,450Hz )\par
+*pin8-square wave(10 Vp-p,4.5Khz).\par
+\subsection{Sampling and holding}
+in this experiment we uses sample and hold circuit in which two operation were perform 1st sample 2nd holding the signal.so how we do this task? we perform this task through IC LF-398. this IC compare the  the input(message signal) with logic (i.e square wave AND also we take 4.5 khz frequency due to Nyquist sampling theorem) if logic value higher then input(message)signal then it perform sampling if logic is less then signal then it perform hold operation.
+here in figure we observe \par
 
 
-\subsection{BPSK}
-In BPSK everything is same as ASK only thing we change Message signal sequence, in ASK we take on-off sequence but in BPSK we take NRZ sequence in which Binary 1 Represented with positive pulse and Binary '0' represented with negative pulse. the value of positive peak +4.5V and negative peak -4. 5V and carrier freq we take 853 khz other all things are same. 
+\begin{figure*}[h]
+	\centering
+	\includegraphics[scale=0.5]{o1.png}
+	\caption{Sampling and holding task perform }
+	\label{o1}
+\end{figure*}
+\subsection{Reconstruction}
+After sampling my final aim to reconstruct the message signal as it.for this we uses reconstruction filter/2nd order Butterworth low pass filter.in which we gave input from pin5 and take output and see waveform on DSO.the figure looks like 
 
-\section{Results}
- \subsection{ASK}
- Output we taken from pin-7 and this output is given in oscilloscope and we observe the figure on oscilloscope and we observe that these figure is same as we study theoretically in above section. 
- \subsection{BPSK}
- again we taken output from pin-7 and connect with oscilloscope and observe the figure and found same figure as we study theoretically in above section. 
+\begin{figure*}[h]
+	\centering
+	\includegraphics[scale=0.5]{reconstructio.png}
+	\caption{Reconstruction of sampled signal}
+	\label{obs}
+\end{figure*}
+
+
+
+
+
 
 \section{Sources of error}
- There is error in square wave(Message signal) we can't generate perfect square wave because Gibbs phenomena. 
+we can't reconstruct same signal there is always some difference between original message signal and reconstructed signal.
+ also if we take sampling value less then 2fm(900hz) impossible to get original signal because aliasing will happen, even if we take sampling frequency=900Hz we are not able to reconstruct the signal because it is impossible to build ideal reconstruction filter.\par
+*in reconstruction (figure-9) if we observe there is spike because we also not able to generate perfect square wave due to Gibbs phenomena.
+ 
 
 
 \section{Conclusion}
- We perform experiment on ASK and BPSK modulation techniques. and verify that what we study theoretically matched or not. 
-
+ we perform sampling by sample and hold circuit.and reconstruct the sampled signal through Butterworth low pass filter
 
 \end{document}
