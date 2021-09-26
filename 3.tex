@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[bottom=0.5in,top=0.5in,right=1in,left=1in]{geometry}
+
+\title{Experiment 3}
+\author{Nitish Kumar Thakur \\ RE000144 }
+\date{17 August, 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Objective}
+1.Study the AM-DSB full carrier modulation and demodulation and implement  practically using IC-AD633\par2.Study the AM-DSB supressed carrier modulation and demodulation and implement circuit practically using IC-AD633
+
+\section{Components and Equipment Required}                    
+ IC AD-633 *Capacitor(0.1uf)-2 *Power supply *Fuction generator *connecting wire *Breadboard *DSO
+ 
+ 
+ 
+\section{Theory}
+Modulation:-one of parameter amplitude,phase,frequency of carrier signal varied according to message signal amplitude variation
+
+
+\subsubsection{Double-sideband full carrier Modulation}
+In Double side band Full carrier modulation technique amplitude of carrier signal varied with respect to message signal amplitude variation.we uses square wave modulation technique to generate modulated signal
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=1.1]{download.png}
+	\caption{DSB-FC}
+	\label{DSF}
+\end{figure*}
+
+\subsection{Double-sideband full carrier demodulation}
+For demodulation of double side band full carrier we uses Envelope detector.proper choice of RC for envelope detection is  \par
+1/fc \ll RC \ll 1/fm.\par
+for good detection of modulated signal RC must lie between those two value.
+
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=1.1]{ed.png}
+	\caption{Envelope detector}
+	\label{ed}
+\end{figure*}
+
+\subsection{Double-sideband suppressed carrier Modulation}
+In double side band supressed carrier demodulation we just multiply the message signal with carrier signal for this we uses multiplier IC AD-633.
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=0.7]{dsbsc.png}
+	\caption{DSB-SC Modulation}
+	\label{dsbsc}
+\end{figure*}
+
+\subsection{Double-sideband suppressed carrier demodulation}
+For demodulation of DSB-SC we use coherent demodulation method.
+
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=0.5]{dsb.png}
+	\caption{DSB-SC Demodulation}
+	\label{dsbsc}
+\end{figure*}
+
+
+
+
+\subsubsection{IC AD-633}
+The AD633 is a four-quadrant, analog multiplier. It includes high impedance, differential X and Y inputs,and a high impedance summing input (Z). 
+total accuracy of 2 percent of full scale.\par 100 µV rmsin.........bandwidth 10 Hz to 10 kHz . \par A 1 MHz bandwidth,20 V/µs slew rate \par
+The block diagram of IC AD-633 is shown in Figure \ref{BD} 
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=0.5]{IC_block_diagram.JPG}
+	\caption{Block diagram of IC AD-633}
+	\label{BD}
+\end{figure*}
+
+
+Pin description of IC AD-633 in figure \ref{BDF} 
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=0.5]{IC_block_diagram_description.jpg}
+	\caption{Description of different pin of IC AD-633}
+	\label{BDF}
+\end{figure*}
+ 
+ 
+The functional diagram of IC AD-633 as a multiplier is shown in Figure \ref{FD}
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[width=1\linewidth]{IC_functional_diagram.JPG}
+	\caption{Functional diagram of IC AD-633 as a multiplier}
+	\label{FD}
+\end{figure*}
+
+
+
+
+
+
+
+
+
+\section{Observation/Results}
+\subsection{DSB-FC Modulation}
+In IC AD-633 we gave message signal in pin 1(+) and pin 2(-).and in Pin 3(+) and 4(-) we gave carrier signal\par
+The  message signal taken from DSO we take sin wave the value of signal is 7 Vp-p and frequency-103Hz\par
+The value of carrier signal(sin wave) we taken from fuction generator with 2 Vp-p and frequency- 3 KHz.\par
+in experiment we supply power +15v and -15v at pin 8 and 5 respectively and we connect o.1uf capacitor at pin 8 and 5.\par
+pin-6 connected to pin-3\par
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=0.7]{abc.png}
+	\caption{Waveform on DSO for DSB-FC modulated signal}
+	\label{dsbsc}
+\end{figure*}
+
+
+\subsection{DSB-FC Demodulation}
+for envelope detection codition is 1/fc \ll RC \ll 1/fm \par 
+1/3Khz  \ll RC  \ll 1/3Khz \par
+0.33msec  \ll RC  \ll 9.708 msec \par
+c=0.01uf\par
+R=12 kohm
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=0.5]{xyz.png}
+	\caption{Waveform after demodulation on DSO}
+	\label{dsbsc}
+\end{figure*}
+
+
+
+\subsection{DSB-FC}
+everything just same as DSB-FC just connect pin-6 to ground.
+\begin{figure*}[ht]
+	\centering
+	\includegraphics[scale=0.5]{mn.png}
+	\caption{Waveform of DSB-SC after modulation on DSO}
+	\label{dsbsc}
+\end{figure*}
+ 
+
+\section{Conclusion}
+ in this experiment we see Modulation demodulation technique of Double sideband full/suppressed carrier signal.for this experiment we uses multiplier IC AD-AD633.
+\end{document}
